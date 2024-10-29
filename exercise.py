@@ -124,17 +124,82 @@ check_voting_eligibility()
 # - Convert the string input to an integer using `int()`.
 # - Apply conditional logic to perform the correct age calculation based on the dog's age.
 
+'''
 def calculate_dog_years():
     # Your control flow logic goes here
 
     #input logic for number dog years
     human_years = input('Please enter your dogs age in human years: ')
 
+    #convert to int from string
     try:
         human_years = int(human_years)
-    #convert to int from string
-    #statement saying 1 year = 10, 2 years = 20, every year after that is +7
-    # print the dogs age
+
+         #statement saying 1 year = 10, 2 years = 20, every year after that is +7
+        if human_years < 0:
+            print('Age cant be a negative number please input a number.')
+        elif human_years == 1:  
+            dog_years = 10
+        elif human_years == 2:  
+            dog_years = 20
+        elif human_years >= 3:
+            dog_years = 20 + (human_years - 2) * 7
+
+            # print the dogs age
+        print(f'The Dog\'s age in dog years is {dog_years}')
+
+    except ValueError:
+        print('Invalid input. Please your dogs age in regular years.')    
+            
+    
+   
+    
 
 # Call the function
 calculate_dog_years()
+'''
+
+
+# Exercise 4: Weather Advice
+#
+# Write a Python script named `weather_advice` that provides clothing advice based on weather conditions.
+#
+# Requirements:
+# - The script should prompt the user to enter if it is cold (yes/no).
+# - Then, ask if it is raining (yes/no).
+# - Use logical operators to determine clothing advice:
+#   - If it is cold AND raining, print "Wear a waterproof coat."
+#   - If it is cold BUT NOT raining, print "Wear a warm coat."
+#   - If it is NOT cold but raining, print "Carry an umbrella."
+#   - If it is NOT cold AND NOT raining, print "Wear light clothing."
+#
+# Hints:
+# - Use logical operators (`AND`, `OR`, `NOT`) in your if statements to handle multiple conditions.
+'''
+def weather_advice():
+    # Your control flow logic goes here
+
+#input for todays weather- is it cold? yes or no: is it raining? yes or no
+    cold = input('For today\'s weather, is it cold outside?: ')
+    rain = input('Is it raining outside?: ')
+
+#conditional statement for cold AND raining, print wear waterproof coat    
+    if cold == 'yes' and rain == 'yes':
+        print('Please wear a waterproof coat')
+#elif statement it is cold but not raining, print wear a warm coat
+    elif cold == 'yes' and rain == 'no':
+        print('Please wear a warm coat.')
+#elif statement not cold but raining, print carry umbrella
+    elif cold == 'no' and rain == 'yes':
+        print('Please bring an umbrella.')
+    elif cold == 'no' and rain == 'no': 
+        print('Wear light clothing')
+    else:
+        print("Invalid input, please put 'yes' or 'no'.")    
+
+#else statement not cold, not raining, pring wear light clothing
+
+
+# Call the function
+weather_advice()
+'''
