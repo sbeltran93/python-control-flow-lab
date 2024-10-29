@@ -36,7 +36,7 @@ print_greeting()
 # - Use the `input()` function to capture user input.
 # - Utilize the `in` operator to check for vowels.
 # - Ensure to provide feedback for non-alphabetical or invalid entries.
-'''
+
 def check_letter():
     # Your control flow logic goes here
     #enter letter input for terminal
@@ -47,19 +47,21 @@ def check_letter():
         return
         #check if letter is a vowel and convert to lowercase
     letter.lower() in letter
-    vowel = {'a', 'e', 'i', 'o', 'u'}
-        #constant = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'}
+    vowels = {'a', 'e', 'i', 'o', 'u'}
+    constants = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'}
         #else print if letter is a consonant
         #else print for invalid input
         
-    if letter == vowel:
+    if letter in vowels:
          print(f'The letter {letter} is a vowel.')
+    elif letter in constants:
+        print(f'The letter {letter} is a constant.')
     else:
-        print(f'The letter {letter} is a constant.')    
+        print('Invalid input.')        
 
 # Call the function
 check_letter()
-'''
+
 
 # Exercise 2: Old enough to vote?
 #
@@ -202,4 +204,61 @@ def weather_advice():
 
 # Call the function
 weather_advice()
+'''
+
+
+# Exercise 5: What's the Season?
+#
+# Write a Python function named `determine_season` that figures out the season based on the entered date.
+#
+# Requirements:
+# - The function should first prompt the user to enter the month (as three characters): "Enter the month of the year (Jan - Dec):"
+# - Then, the function should prompt the user to enter the day of the month: "Enter the day of the month:"
+# - Determine the current season based on the date:
+#      - Dec 21 - Mar 19: Winter
+#      - Mar 20 - Jun 20: Spring
+#      - Jun 21 - Sep 21: Summer
+#      - Sep 22 - Dec 20: Fall
+# - Print the season for the entered date in the format: "<Mmm> <dd> is in <season>."
+#
+# Hints:
+# - Use 'in' to check if a string is in a list or tuple.
+# - Adjust the season based on the day of the month when needed.
+# - Ensure to validate input formats and handle unexpected inputs gracefully.
+
+'''
+def determine_season():
+    # Your control flow logic goes here
+    #put months in a tuple?
+    months = ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
+#input for the month/ input for the day of the month
+    month = input('What month are you looking for? Please first 3 letters of month only: ').strip().capitalize()
+    day = input('What day are you looking for?: ').strip()
+    #vaildate day 
+    if not day.isdigit() or int(day) < 1 or int(day) > 31:
+        print('Invalid day input. Please enter a valid numerical date.(1-31)')
+        return
+    #convert day to an integer
+    day = int(day)
+# define or conditional the seasons by the month and day
+    if not month in months:
+        print('invalid month format. Please enter a valid month by 1st 3 letters only.')
+        return
+    
+    if (month == 'Dec' and day >= 21) or (month == 'Jan') or (month == 'Feb') or (month == 'Mar' and day < 20):
+        season = 'Winter'
+    elif (month == 'Mar' and day >= 20) or (month == 'Apr') or (month == 'May') or (month == 'Jun' and day < 21):
+        season = 'Spring'
+    elif (month == 'Jun' and day >= 21) or (month == 'Jul') or (month == 'Aug') or (month == 'Sep' and day < 22):
+        season = 'Summer'
+    elif (month == 'Sep' and day >= 22) or (month == 'Oct') or (month == 'Nov') or (month == 'Dec' and day < 21):
+        season = 'Fall'    
+
+    print(f"The dates you entered: {month} {day} is in {season}")
+#print the season for entered date in the format {month} {day} is season {season}     
+
+
+
+# Call the function
+determine_season()
 '''
